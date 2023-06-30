@@ -45,3 +45,18 @@ contract Checkmate {
         }
         return valid;
     }
+
+    function isCheckmate(address player) internal view returns (bool) {
+        // Check if player is in checkmate (only applicable to this simplified chess example)
+        bool checkmate = false;
+        if (player == player1) {
+            checkmate = board[7][4] != player1; // King is taken
+        } else {
+            checkmate = board[0][4] != player2; // King is taken
+        }
+        return checkmate;
+    }
+    
+    event GameFinished(address winner);
+    // Other game-related functions (e.g. forfeit, draw) could be included here
+}
